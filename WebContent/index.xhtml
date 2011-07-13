@@ -1,0 +1,38 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+<ui:composition template="templates/template.xhtml">
+	<ui:define name="header">
+		<ui:include src="includes/header.xhtml"></ui:include>
+	</ui:define>
+	<ui:define name="data">
+	    Please sign-in to view/modify your account. <br /> 
+	Register for free if you are new. <br />
+		<h:panelGrid columns="3">
+			<h:outputLabel for="userid" value="User ID" />
+			<h:inputText id="userid" value="#{signInRequest.userId}" />
+			<h:message for="userid" value="#{signInRequest.userIdMessage}" />
+
+			<h:outputLabel for="password" value="Password" />
+			<h:inputSecret id="password" value="#{signInRequest.password}" />
+			<h:message for="password" value="#{signInRequest.passwordMessage}" />
+		</h:panelGrid>
+		<h:messages />
+		<hr />
+		<h:commandLink action="#{signInRequest.signIn}" value="Sign in"
+			rendered="#{userSession.renderSignIn}" />
+		<h:outputText value=" " rendered="#{userSession.renderSignIn}" />
+		<h:commandLink action="#{signInRequest.register}" value="Register"
+			rendered="#{userSession.renderRegister}" />
+		<h:outputText value=" " rendered="#{userSession.renderRegister}" />
+	</ui:define>
+	<ui:define name="footer">
+		<ui:include src="includes/footer.xhtml"></ui:include>
+	</ui:define>
+</ui:composition>
+</html>

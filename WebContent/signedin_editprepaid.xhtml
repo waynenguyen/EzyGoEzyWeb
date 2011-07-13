@@ -1,0 +1,36 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+<ui:composition template="templates/template.xhtml">
+	<ui:define name="header">
+	    <ui:include src="includes/header.xhtml"></ui:include>
+	</ui:define>
+	<ui:define name="data">
+		Please choose the amount to top up your balance.<br></br>
+	    <h:panelGrid columns="3">
+			<h:outputLabel for="balance" value="Current Balance" />
+			<h:outputText id="userid" value="#{signedIn_PrepaidRequest.balance}"/>
+			<h:message for="balance" />			
+			
+			<h:outputLabel for="address" value="Top Up Amount"/>
+			 <h:selectOneListbox id="pickPrepaidTopUp" value="#{signedIn_PrepaidRequest.topUpAmount}" style="width: 187px; ">
+	  		<f:selectItems value="#{signedIn_PrepaidRequest.lit}"/>
+	  		</h:selectOneListbox>
+			<h:commandButton id="prepaid" value="Top Up" action="#{signedIn_PrepaidRequest.topUp}"/>
+		</h:panelGrid>
+		<h:messages />
+		<hr/>
+		      
+		<h:commandLink id="save" action="#{signedIn_PrepaidRequest.saveAndGoBack}" value="Save and Go Back" rendered="#{registerRequest.renderRegister}"/>
+		
+	</ui:define>
+	<ui:define name="footer">
+	    <ui:include src="includes/footer.xhtml"></ui:include>
+	</ui:define>
+</ui:composition>
+</html>

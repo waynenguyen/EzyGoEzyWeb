@@ -1,0 +1,50 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+<ui:composition template="templates/template.xhtml">
+	<ui:define name="header">
+	    <ui:include src="includes/header.xhtml"></ui:include>
+	</ui:define>
+	<ui:define name="data">
+		Please enter your information. <br></br>
+	    <h:panelGrid columns="3">
+			<h:outputLabel for="userid" value="User Name" />
+			<h:inputText id="userid" value="#{registerRequest.userName}" validator="#{registerRequest.validateUserId}"/>
+			<h:message for="userid" />
+
+			<h:outputLabel for="password" value="Password" />
+			<h:inputSecret id="password" value="#{registerRequest.password}" validator="#{registerRequest.validatePassword}"/>
+			<h:message for="password" />
+			
+			<h:outputLabel for="firstname" value="First Name"/>
+			<h:inputText id="firstname" value="#{registerRequest.firstName}" validator="#{registerRequest.validateFirstName}"/>
+			<h:message for="firstname"/>
+			
+			<h:outputLabel for="lastname" value="Last Name"/>
+			<h:inputText id="lastname" value="#{registerRequest.lastName}" validator="#{registerRequest.validateLastName}"/>
+			<h:message for="lastname"/>
+			
+			<h:outputLabel for="email" value="Email"/>
+			<h:inputTextarea id="email" value="#{registerRequest.email}" validator="#{registerRequest.validateEmail}"/>
+			<h:message for="email"/>
+			
+			<h:outputLabel for="address" value="Address"/>
+			<h:inputTextarea id="address" value="#{registerRequest.address}" validator="#{registerRequest.validateAddress}"/>
+			<h:message for="address"/>
+		</h:panelGrid>
+		<h:messages />
+		<hr/>
+		
+		<h:commandLink id="register" action="#{registerRequest.register}" value="Register" rendered="#{registerRequest.renderRegister}"/>
+		
+	</ui:define>
+	<ui:define name="footer">
+	    <ui:include src="includes/footer.xhtml"></ui:include>
+	</ui:define>
+</ui:composition>
+</html>

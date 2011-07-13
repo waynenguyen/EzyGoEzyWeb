@@ -1,0 +1,48 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+<ui:composition template="templates/template.xhtml">
+	<ui:define name="header">
+	    <ui:include src="includes/header.xhtml"></ui:include>
+	</ui:define>
+	<ui:define name="data">
+		Please choose your payment method(s).<br></br>
+	    <h:panelGrid columns="3">
+	    	
+			<h:outputLabel for="prepaid" value="Prepaid" />
+			<h:commandButton id="prepaid" value="Add" action="#{signedIn_PaymentMethodRequest.goPrepaid}" style="width: 95px; "/>
+			<h:message for="smsnumber" />
+	
+			<h:outputLabel for="smsnumber" value="Credit Card" />
+			<h:commandButton id="smsnumber" value="Add" action="#{signedIn_PaymentMethodRequest.goCreditCard}" style="width: 93px; "/>
+			<h:message for="smsnumber" />
+			
+			<h:outputLabel for="smsnumber" value="Prepaid Balance" />
+			<h:outputLabel for="smsnumber" value="#{signedIn_PrepaidRequest.balance}" />
+			<h:outputLabel for="smsnumber" value="" />
+			<h:selectOneListbox id="creditList" value="#{signedIn_PaymentMethodRequest.currentCreditCard}" style="width: 187px; ">
+	  		<f:selectItems value="#{signedIn_PaymentMethodRequest.creditCardList}"/>
+	  		</h:selectOneListbox>
+			<h:commandButton  value="View/Edit" action="#{signedIn_PaymentMethodRequest.goEditCard}" style="width: 102px; "/>
+			<h:commandButton value="Delete" action="#{signedIn_PaymentMethodRequest.deleteCard}" style="width: 99px; "/>
+		</h:panelGrid>
+		<h:messages />
+		<hr/>
+		
+		<h:commandLink id="commMethodRequest_back" action="#{signedInRequest.update}" value="Update" rendered="#{registerRequest.renderRegister}" > </h:commandLink>
+		<space></space><space></space>
+		<h:commandLink id="commMethodRequest_next" action="#{signedInRequest.cancel}" value="Cancel" rendered="#{registerRequest.renderRegister}"/>
+		
+		
+		
+	</ui:define>
+	<ui:define name="footer">
+	    <ui:include src="includes/footer.xhtml"></ui:include>
+	</ui:define>
+</ui:composition>
+</html>

@@ -1,0 +1,270 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<faces-config
+    xmlns="http://java.sun.com/xml/ns/javaee"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facesconfig_2_0.xsd"
+    version="2.0">
+	<managed-bean>
+		<description>It controls each user's sign-in/registered status. It is also used to guide the registeration flow (and other future flows).</description>
+		<managed-bean-name>userSession</managed-bean-name>
+		<managed-bean-class>ege.beans.UserSession</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
+	<managed-bean>
+		<description>This bean handles the form data ()choices or menu) of signedin page after user sign in.</description>
+		<managed-bean-name>signedInRequest</managed-bean-name>
+		<managed-bean-class>ege.beans.SignedInRequest</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+		<managed-property>
+			<property-name>userSession</property-name>
+			<property-class>ege.beans.UserSession</property-class>
+			<value>#{userSession}</value>
+		</managed-property>
+	</managed-bean>
+	<managed-bean>
+		<description>This bean handles to Registration form.</description>
+		<managed-bean-name>registerRequest</managed-bean-name>
+		<managed-bean-class>ege.beans.RegisterRequest</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+		<managed-property>
+			<property-name>userSession</property-name>
+			<property-class>ege.beans.UserSession</property-class>
+			<value>#{userSession}</value>
+		</managed-property>
+	</managed-bean>
+	<managed-bean>
+		<description>This bean handles to Communication Method form.</description>
+		<managed-bean-name>commMethodRequest</managed-bean-name>
+		<managed-bean-class>ege.beans.CommMethodRequest</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+		<managed-property>
+			<property-name>userSession</property-name>
+			<property-class>ege.beans.UserSession</property-class>
+			<value>#{userSession}</value>
+		</managed-property>
+	</managed-bean>
+	<managed-bean>
+		<description>Handle payment request</description>
+		<managed-bean-name>paymentMethodRequest</managed-bean-name>
+		<managed-bean-class>ege.beans.PaymentMethodRequest</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
+	<managed-bean>
+		<description>Handle prepaid request</description>
+		<managed-bean-name>prepaidRequest</managed-bean-name>
+		<managed-bean-class>ege.beans.PrepaidRequest</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
+	<managed-bean>
+		<description>Handle credit request</description>
+		<managed-bean-name>creditRequest</managed-bean-name>
+		<managed-bean-class>ege.beans.CreditRequest</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
+	<managed-bean>
+		<description>This bean handles the form data of signin page.</description>
+		<managed-bean-name>signInRequest</managed-bean-name>
+		<managed-bean-class>ege.beans.SignInRequest</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+		<managed-property>
+			<property-name>userSession</property-name>
+			<property-class>ege.beans.UserSession</property-class>
+			<value>#{userSession}</value>
+		</managed-property>
+	</managed-bean>
+	<managed-bean>
+		<managed-bean-name>signedIn_PersonalRequest</managed-bean-name>
+		<managed-bean-class>ege.beans.SignedIn_PersonalRequest</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
+	<managed-bean>
+		<managed-bean-name>signedIn_PaymentMethodRequest</managed-bean-name>
+		<managed-bean-class>ege.beans.SignedIn_PaymentMethodRequest</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
+	<managed-bean>
+		<managed-bean-name>signedIn_PrepaidRequest</managed-bean-name>
+		<managed-bean-class>ege.beans.SignedIn_PrepaidRequest</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
+	<managed-bean>
+		<managed-bean-name>signedIn_CommMethodRequest</managed-bean-name>
+		<managed-bean-class>ege.beans.SignedIn_CommMethodRequest</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
+	
+	<navigation-rule>
+		<display-name>index.xhtml</display-name>
+		<from-view-id>/index.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>signedIn</from-outcome>
+			<to-view-id>/signedin.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>register12</from-outcome>
+			<to-view-id>/register.xhtml</to-view-id>
+		</navigation-case><navigation-case>
+		<from-outcome>failSignIn</from-outcome>
+			<to-view-id>/index.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
+		<display-name>signout</display-name>
+		<from-view-id>*</from-view-id>
+		<navigation-case>
+			<from-outcome>signedOut</from-outcome>
+			<to-view-id>/index.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
+		<display-name>register.xhtml</display-name>
+		<from-view-id>/register.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>chooseCommMethod</from-outcome>
+			<to-view-id>/choosecommmethod.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
+		<display-name>chooseCommMethod.xhtml</display-name>
+		<from-view-id>/choosecommmethod.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>choosePaymentMethod</from-outcome>
+			<to-view-id>/choosepaymentmethod.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>register.xhtml</from-outcome>
+			<to-view-id>/register.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>choose1</from-outcome>
+			<to-view-id>/choosecommmethod.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	
+		<navigation-rule>
+		<display-name>choosePaymentMethod.xhtml</display-name>
+		<from-view-id>/choosepaymentmethod.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>prepaid.xhtml</from-outcome>
+			<to-view-id>/prepaid.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>index1.xhtml</from-outcome>
+			<to-view-id>/index1.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>index.xhtml</from-outcome>
+			<to-view-id>/index.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>credit.xhtml</from-outcome>
+			<to-view-id>/credit.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>goeditcard</from-outcome>
+			<to-view-id>/register_editcreditcard.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>paymentMethodRequest</from-outcome>
+			<to-view-id>/choosepaymentmethod.xhtml</to-view-id>
+		</navigation-case>
+		
+	</navigation-rule>
+	
+	<navigation-rule>
+		<display-name>prepaid.xhtml</display-name>
+		<from-view-id>/prepaid.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>prepaid.xhtml</from-outcome>
+			<to-view-id>/prepaid.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>choose</from-outcome>
+			<to-view-id>/choosepaymentmethod.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
+		<display-name>index1.xhtml</display-name>
+		<from-view-id>/index1.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>choosepaymentmethod</from-outcome>
+			<to-view-id>/choosepaymentmethod.xhtml</to-view-id>
+		</navigation-case>
+		
+	</navigation-rule>
+	
+	<navigation-rule>
+		<display-name>signedIn.xhtml</display-name>
+		<from-view-id>/signedIn.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>signedin</from-outcome>
+			<to-view-id>/signedin.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>edit</from-outcome>
+			<to-view-id>/editpersonalinfo.xhtml</to-view-id>			
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>edit1</from-outcome>
+			<to-view-id>/editcommmethodinfo.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>edit3</from-outcome>
+			<to-view-id>/editpaymentmethod.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>index</from-outcome>
+			<to-view-id>/index.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	
+	<navigation-rule>
+		<display-name>register_editcreditcard.xhtml</display-name>
+		<from-view-id>/register_editcreditcard.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>paymentMethodRequest</from-outcome>
+			<to-view-id>/choosepaymentmethod.xhtml</to-view-id>
+		</navigation-case>
+		
+	</navigation-rule>
+	
+	<navigation-rule>
+		<display-name>editpaymentmethod.xhtml</display-name>
+		<from-view-id>/editpaymentmethod.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>signedin_editprepaid</from-outcome>
+			<to-view-id>/signedin_editprepaid.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>signedin_editcreditcard</from-outcome>
+			<to-view-id>/signedIn_editcreditcard.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>paymentMethodRequest</from-outcome>
+			<to-view-id>/editpaymentmethod.xhtml</to-view-id>
+		</navigation-case>
+		
+	</navigation-rule>
+	
+	<navigation-rule>
+		<display-name>signedin_editprepaid.xhtml</display-name>
+		<from-view-id>/signedin_editprepaid.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>signedin_prepaid</from-outcome>
+			<to-view-id>/signedin_editprepaid.xhtml</to-view-id>
+		</navigation-case>
+		
+	</navigation-rule>
+	
+	<navigation-rule>
+		<display-name>signedIn_editcreditcard.xhtml</display-name>
+		<from-view-id>/signedIn_editcreditcard.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>paymentMethodRequest</from-outcome>
+			<to-view-id>/editpaymentmethod.xhtml</to-view-id>
+		</navigation-case>
+		
+	</navigation-rule>
+	
+</faces-config>

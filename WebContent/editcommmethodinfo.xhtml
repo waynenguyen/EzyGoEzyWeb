@@ -1,0 +1,33 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+<ui:composition template="templates/template.xhtml">
+	<ui:define name="header">
+	    <ui:include src="includes/header.xhtml"></ui:include>
+	</ui:define>
+	<ui:define name="data">
+	    <h:panelGrid columns="3">
+			<h:outputLabel for="smsnumber" value="SMS Number" />
+			<h:inputText id="firstname" value="#{signedIn_CommMethodRequest.smsNumber}" validator="#{registerRequest.validateFirstName}"/>
+			<h:commandButton id="smsnumber" value="Add Number" action="#{signedIn_CommMethodRequest.addNumber}" />
+			
+			
+			
+		</h:panelGrid>
+		<h:messages />
+		<hr/>
+		<h:commandLink id="commMethodRequest_back" action="#{signedIn_CommMethodRequest.update}" value="Update" rendered="#{registerRequest.renderRegister}" > </h:commandLink>
+		<space></space><space></space>
+		<h:commandLink id="commMethodRequest_next" action="#{signedInRequest.cancel}" value="Cancel" rendered="#{registerRequest.renderRegister}"/>
+		
+	</ui:define>
+	<ui:define name="footer">
+	    <ui:include src="includes/footer.xhtml"></ui:include>
+	</ui:define>
+</ui:composition>
+</html>

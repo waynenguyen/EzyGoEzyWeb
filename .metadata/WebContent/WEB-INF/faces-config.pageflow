@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pageflow:Pageflow xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:pageflow="http://www.sybase.com/suade/pageflow" id="pf13072543977490" configfile="/EGEWeb/WebContent/WEB-INF/faces-config.xml">
+  <nodes xsi:type="pageflow:PFPage" name="index.xhtml" x="338" y="178" id="pf13072859975060" referenceLink="//@navigationRule.7/@navigationCase.4/@toViewId|" outlinks="pf13072883938503 pf13072956325681 pf13072956325682" inlinks="pf13072956325682 pf13072956325683 pf13091429429870 pf130915742903734" path="/index.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="signedin.xhtml" x="554" y="178" id="pf13072883938505" referenceLink="//@navigationRule.7/@navigationCase.0/@toViewId|" inlinks="pf13072883938503 pf130915436937816" path="/signedin.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="register.xhtml" x="554" y="562" id="pf13072956325684" referenceLink="//@navigationRule.3/@navigationCase.1/@toViewId|" outlinks="pf13073389369890" inlinks="pf13072956325681 pf13090990658661" path="/register.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="signout" x="122" y="178" id="pf13072956325845" referenceLink="//@navigationRule.1/@fromViewId|" outlinks="pf13072956325683" path="*"/>
+  <nodes xsi:type="pageflow:PFPage" name="chooseCommMethod.xhtml" x="96" y="480" id="pf13073389370051" referenceLink="//@navigationRule.3/@navigationCase.2/@toViewId|" outlinks="pf13090990658662 pf13090990658661 pf130909920035710" inlinks="pf13073389369890 pf130909920035710" path="/choosecommmethod.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="choosePaymentMethod.xhtml" x="554" y="946" id="pf13090990658664" referenceLink="//@navigationRule.8/@navigationCase.0/@toViewId|" outlinks="pf130909921165111 pf130909923947115 pf130909986859417 pf13091429429870 pf13097653788560 pf13098419913323" inlinks="pf13090990658662 pf13091451131684 pf13091458097339 pf13098368123950 pf13098419913323" path="/choosepaymentmethod.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="prepaid.xhtml" x="398" y="60" id="pf130909921165113" referenceLink="//@navigationRule.5/@fromViewId|" outlinks="pf13091440569382 pf13091451131684" inlinks="pf130909921165111 pf13091440569382" path="/prepaid.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="credit.xhtml" x="696" y="600" id="pf130909923947116" referenceLink="//@navigationRule.4/@navigationCase.3/@toViewId|" inlinks="pf130909923947115" path="/credit.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="index1.xhtml" x="780" y="144" id="pf130909986859418" referenceLink="//@navigationRule.6/@fromViewId|" outlinks="pf13091458097339" inlinks="pf130909986859417" path="/index1.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="signedIn.xhtml" id="pf130915434297115" referenceLink="//@navigationRule.7/@fromViewId|" outlinks="pf130915436937816 pf130915456652318 pf130915622502527 pf130915713552031 pf130915742903734" path="/signedIn.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="editpersonalinfo.xhtml" id="pf130915456652319" referenceLink="//@navigationRule.7/@navigationCase.1/@toViewId|" inlinks="pf130915456652318" path="/editpersonalinfo.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="editcommmethodinfo.xhtml" id="pf130915622502528" referenceLink="//@navigationRule.7/@navigationCase.2/@toViewId|" inlinks="pf130915622502527" path="/editcommmethodinfo.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="editpaymentmethod.xhtml" id="pf130915713552032" referenceLink="//@navigationRule.11/@navigationCase.0/@toViewId|" outlinks="pf13099434640402 pf13099494855093 pf13099686738111" inlinks="pf130915713552031 pf13099671445632 pf13099686738111" path="/editpaymentmethod.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="register_editcreditcard.xhtml" id="pf13097653788571" referenceLink="//@navigationRule.8/@fromViewId|" outlinks="pf13098368123950" inlinks="pf13097653788560" path="/register_editcreditcard.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="signedin_editprepaid.xhtml" id="pf13099434640413" referenceLink="//@navigationRule.10/@navigationCase.0/@toViewId|" outlinks="pf13099445591904" inlinks="pf13099434640402 pf13099445591904" path="/signedin_editprepaid.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="signedIn_editcreditcard.xhtml" id="pf13099494855094" referenceLink="//@navigationRule.11/@fromViewId|" outlinks="pf13099671445632" inlinks="pf13099494855093" path="/signedIn_editcreditcard.xhtml"/>
+  <links id="pf13072883938503" target="pf13072883938505" source="pf13072859975060" outcome="signedIn"/>
+  <links id="pf13072956325681" target="pf13072956325684" source="pf13072859975060" outcome="register12"/>
+  <links id="pf13072956325683" target="pf13072859975060" source="pf13072956325845" outcome="signedOut"/>
+  <links id="pf13073389369890" target="pf13073389370051" source="pf13072956325684" outcome="chooseCommMethod"/>
+  <links id="pf13090990658662" target="pf13090990658664" source="pf13073389370051" outcome="choosePaymentMethod"/>
+  <links id="pf13072956325682" target="pf13072859975060" source="pf13072859975060" outcome="failSignIn">
+    <bendPoints d1Height="-36" d2Height="-36"/>
+    <bendPoints d1Width="-64" d1Height="-36" d2Width="-64" d2Height="-36"/>
+    <bendPoints d1Width="-64" d2Width="-64"/>
+  </links>
+  <links id="pf13090990658661" target="pf13072956325684" source="pf13073389370051" outcome="register.xhtml"/>
+  <links id="pf130909920035710" target="pf13073389370051" source="pf13073389370051" outcome="choose1"/>
+  <links id="pf130909921165111" target="pf130909921165113" source="pf13090990658664" outcome="prepaid.xhtml"/>
+  <links id="pf130909923947115" target="pf130909923947116" source="pf13090990658664" outcome="credit.xhtml"/>
+  <links id="pf130909986859417" target="pf130909986859418" source="pf13090990658664" outcome="index1.xhtml"/>
+  <links id="pf13091429429870" target="pf13072859975060" source="pf13090990658664" outcome="index.xhtml"/>
+  <links id="pf13091440569382" target="pf130909921165113" source="pf130909921165113" outcome="prepaid.xhtml"/>
+  <links id="pf13091451131684" target="pf13090990658664" source="pf130909921165113" outcome="choose"/>
+  <links id="pf13091458097339" target="pf13090990658664" source="pf130909986859418" outcome="choosepaymentmethod"/>
+  <links id="pf130915436937816" target="pf13072883938505" source="pf130915434297115" outcome="signedin"/>
+  <links id="pf130915456652318" target="pf130915456652319" source="pf130915434297115" outcome="edit"/>
+  <links id="pf130915622502527" target="pf130915622502528" source="pf130915434297115" outcome="edit1"/>
+  <links id="pf130915713552031" target="pf130915713552032" source="pf130915434297115" outcome="edit3"/>
+  <links id="pf130915742903734" target="pf13072859975060" source="pf130915434297115" outcome="index"/>
+  <links id="pf13097653788560" target="pf13097653788571" source="pf13090990658664" outcome="goeditcard"/>
+  <links id="pf13098368123950" target="pf13090990658664" source="pf13097653788571" outcome="paymentMethodRequest"/>
+  <links id="pf13098419913323" target="pf13090990658664" source="pf13090990658664" outcome="paymentMethodRequest"/>
+  <links id="pf13099434640402" target="pf13099434640413" source="pf130915713552032" outcome="signedin_editprepaid"/>
+  <links id="pf13099445591904" target="pf13099434640413" source="pf13099434640413" outcome="signedin_prepaid"/>
+  <links id="pf13099494855093" target="pf13099494855094" source="pf130915713552032" outcome="signedin_editcreditcard"/>
+  <links id="pf13099671445632" target="pf130915713552032" source="pf13099494855094" outcome="paymentMethodRequest"/>
+  <links id="pf13099686738111" target="pf130915713552032" source="pf130915713552032" outcome="paymentMethodRequest"/>
+</pageflow:Pageflow>

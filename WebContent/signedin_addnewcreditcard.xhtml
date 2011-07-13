@@ -1,0 +1,47 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+<ui:composition template="templates/template.xhtml">
+	<ui:define name="header">
+		<ui:include src="includes/header.xhtml"></ui:include>
+	</ui:define>
+	<ui:define name="data">
+	    Please enter your credit card details. <br /> 
+	
+		<h:panelGrid columns="3">
+			<h:outputLabel for="userid" value="Card number" />
+			<h:inputText id="userid" value="#{signedIn_CreditRequest.cardNumber}" />
+			<h:message for="userid" value="#{signInRequest.userIdMessage}" />
+
+			<h:outputLabel for="password" value="Card holder name" />
+			<h:inputText id="password" value="#{signedIn_CreditRequest.cardHolderName}" />
+			<h:message for="password" value="#{signInRequest.passwordMessage}" />
+			
+			<h:outputLabel for="password1" value="Card expiry date" />
+			<h:inputText id="password1" value="#{signedIn_CreditRequest.expiryDate}" />
+			<h:message for="password1" value="#{signInRequest.passwordMessage}" />
+			
+
+			
+			
+		</h:panelGrid>
+		<h:messages />
+		<hr />
+		
+		<h:commandLink action="#{signedIn_CreditRequest.saveAndGoBack}" value="Save and Go Back"
+			rendered="#{userSession.renderRegister}" />
+			
+		<h:outputText value=" " rendered="#{userSession.renderRegister}" />
+		<br></br>
+		
+	</ui:define>
+	<ui:define name="footer">
+		<ui:include src="includes/footer.xhtml"></ui:include>
+	</ui:define>
+</ui:composition>
+</html>

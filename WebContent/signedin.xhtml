@@ -1,0 +1,38 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+<ui:composition template="templates/template.xhtml">
+	<ui:define name="header">
+	    <ui:include src="includes/header.xhtml"/>
+	</ui:define>
+	<ui:define name="data">
+	    Successfully signed-in. Welcome <h:outputText value="#{userSession.userId}"/>
+	    <br></br>
+	    
+	    <h:commandLink id="register00" action="#{signedInRequest.edit}" value="View/Edit personal information" rendered="#{registerRequest.renderRegister}"/>
+	    <br></br>
+	    <h:commandLink id="register1" action="#{signedInRequest.edit1}" value="View/Edit communication method" rendered="#{registerRequest.renderRegister}"/>
+	    <br></br>
+	    <h:commandLink id="register2" action="#{signedInRequest.edit3}" value="View/Edit payment method" rendered="#{registerRequest.renderRegister}"/>
+
+		<br></br>
+		<br></br>
+		<br></br>
+		<h:commandLink id="logout" action="#{signedInRequest.logOut}" value="Log out" rendered="#{registerRequest.renderRegister}"/>	
+
+	</ui:define>
+	<br></br>
+	
+	
+	
+	
+	<ui:define name="footer">
+	    <ui:include src="includes/footer.xhtml"/>
+	</ui:define>
+</ui:composition>
+</html>
